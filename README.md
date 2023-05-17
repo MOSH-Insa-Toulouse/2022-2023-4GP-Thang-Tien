@@ -7,7 +7,7 @@
 - [x] Effectuer une évaluation du capteur sur un banc d'essai afin de produire une fiche technique et de comparer la technologie utilisée avec celle d'un autre capteur commercial similaire
 
 # 2. Capteur de contrainte
-> Notre capteur de contrainte utilise une jauge en papier dotée d'un circuit résistif en graphite, qui présente l'avantage d'être facile à mettre en place à faible coût. 
+> Notre capteur de contrainte utilise une jauge en papier équipée d'un circuit résistif en graphite, offrant l'avantage d'être facile à installer à moindre coût.
 > La théorie de la percolation est exploitée dans ce capteur low-tech, qui est composé de nanoparticules de graphite formant des feuillets. Le réseau percolé caractéristique de la fine couche de graphite déposée sur la feuille de papier permet le transport des électrons entre les nanoparticules par l'effet tunnel. La déformation de la jauge en tension ou en compression entraîne une variation de la résistance de la couche de graphite, ce qui permet de mesurer la contrainte et la déformation appliquées.
 > Le fonctionnement de notre jauge de contrainte repose sur la variation de la résistance du circuit résistif en fonction de sa déformation. Elle est alimentée par une tension régulée de 5V fournie par une carte Arduino UNO. Le courant circulant dans la jauge est mesuré pour fournir le signal du capteur, qui doit ensuite être amplifié et filtré.
   ## 2.1. Circuit amplificateur
