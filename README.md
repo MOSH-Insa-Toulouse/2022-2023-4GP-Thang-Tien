@@ -18,10 +18,10 @@
  
  >   À partir de cet AOP, nous élaborons l'architecture du circuit amplificateur (cf. [Figure 1a](analog_circuit_images/analog_circuit.JPG)). Ce dernier dispose de trois étages de filtrage:
  >   - à l'entrée, un filtre passe-bas (R1C1) de fréquence de coupure de 16 Hz permet de filtrer les bruits en courant sur le signal d'entrée
- >   - un autre filtre passe bas de 1.6 Hz (R3C4) couplé à l'AOP permet de filtrer la composante du bruit à 50 Hz provenant du réseau électrique
- >   - à la sortie de l'amplificateur, un dernier filtre (R5C2) de 1.6 kHz permet de traiter les bruits dus à l'échantillonage de l'ADC
+ >   - un autre filtre passe bas de 1.6 Hz (R3C2) couplé à l'AOP permet de filtrer la composante du bruit à 50 Hz provenant du réseau électrique
+ >   - à la sortie de l'amplificateur, un dernier filtre (R4C4) de 1.6 kHz permet de traiter les bruits dus à l'échantillonage de l'ADC
 
- >   La capacité C3 sert à filtrer les irrégularités de la tension d'alimentation de l'amplificateur. La résistance R2 sert à calibrer l'amplificateur sur le domaine de tension souhaité, qui est celui de l'ADC du micro-contrôleur. Lors de la phase de prototypage du circuit, nous avons utilisé un potentiomètre digital à la place de cette résistance pour trouver sa valeur. Enfin, la résistance R4 protège l'AOP contre les décharges électrostatiques et constitue un filtre RC avec la capacité C1 pour les bruits en tension.
+ >   La capacité C3 sert à filtrer les irrégularités de la tension d'alimentation de l'amplificateur. La résistance R2 sert à calibrer l'amplificateur sur le domaine de tension souhaité, qui est celui de l'ADC du micro-contrôleur. Lors de la phase de prototypage du circuit, nous avons utilisé un potentiomètre digital à la place de cette résistance pour trouver sa valeur. Enfin, la résistance R5 protège l'AOP contre les décharges électrostatiques et constitue un filtre RC avec la capacité C1 pour les bruits en tension.
 
  > <div class="row" align="center">
    > <img src="image projet/Circuit amplificateur transimpédance.PNG"/>
@@ -41,13 +41,12 @@
    > </div>
 **Figure 2 - Simulation du fonctionnement du circuit amplificateur. Un pulse de tension permet de modéliser la déformation de la jauge et la variation du signal en courant.**
  
-
  > <div class="row" align="center">
    > <img src="image projet/resultat deform.PNG"/>
    > </div>
-**Figure 3: Résultats de la simulation. En vert, le signal en courant fourni par la jauge et en bleu la tension de sortie de l'AOP.**
+**Figure 3: Résultats de la simulation. En bleu, le signal en courant fourni par la jauge et en vert la tension de sortie de l'AOP.**
 
-> Sur la plage de conductance prise en compte, le signal de sortie passe d'environ 240 mV à 1.05 V, ce qui ne sature pas l'ADC. L'amplitude crête-à-crête du bruit en 50 Hz est de 14 mV RMS. Ce signal est donc détectable par l'ADC qui a une sensibilité d'environ 5 mV. Le rapport signal sur bruit est de 25.6 dB pour la plus faible conductance et de 37.2 dB pour la conductance la plus élevée. Si notre signal sur cette simulation n'est fondamentalement pas considéré comme bon en terme d'instrumentation (rapport signal sur bruit inférieur à 40 dB), remarquons que naturellement, plus le signal de sortie est élevé (i.e. plus la conductance est élevée), plus le bruit à 50 Hz est écrasé par le signal. Cela signifie que plus la conductance de la jauge est élevée, plus nos mesures seront fiables et précises. Pour cette raison, nous avons tout intérêt à utiliser des jauges de contrainte de résistance relativement faibles (autour de 50 MΩ ou moins) pour nos mesures. Pour avoir une plus grande liberté sur les conductances des jauges utilisées, nous aurions pu intégrer directement sur le PCB un potentiomètre digital à la place de R2. Cela permettrait (après une étape de calibration) d'adapter le signal de sortie à la jauge résistive utilisée pour obtenir un signal optimal. Néanmoins, si nous nous restreignons à utiliser des jauges aux conductances assez élevées, alors nous obtenons un signal tout à fait acceptable.
+> En prenant en compte la plage de conductance considérée, le signal de sortie varie d'environ 240 mV à 1,05 V, ce qui ne sature pas l'ADC. L'amplitude crête-à-crête du bruit à 50 Hz est de 14 mV RMS. Ainsi, ce signal est détectable par l'ADC qui a une sensibilité d'environ 5 mV. Le rapport signal sur bruit est de 25,6 dB pour la conductance la plus faible et de 37,2 dB pour la conductance la plus élevée. Bien que notre signal dans cette simulation ne soit pas considéré comme optimal en termes d'instrumentation (rapport signal sur bruit inférieur à 40 dB), il est important de noter que plus le signal de sortie est élevé (c'est-à-dire plus la conductance est élevée), plus le bruit à 50 Hz est atténué par le signal. Cela signifie que des mesures plus fiables et précises peuvent être obtenues en utilisant des jauges de contrainte de résistance relativement faibles (environ 50 MΩ ou moins). Pour avoir une plus grande flexibilité quant aux conductances des jauges utilisées, il aurait été possible d'intégrer directement sur le PCB un potentiomètre numérique en remplacement de R2. Cela aurait permis, après une étape de calibration, d'adapter le signal de sortie à la jauge résistive utilisée afin d'obtenir un signal optimal. Cependant, si nous limitons l'utilisation de jauges présentant des conductances suffisamment élevées, nous obtenons un signal tout à fait acceptable.
 
   ## 2.2. Intégration Arduino
    > <div class="row" align="center">
@@ -70,15 +69,28 @@
 # 4. Application mobile
 > Dans le cadre de ce projet, nous avons programmé sur MIT APP INVENTOR, l'application mobile connectée au module Bluetooth du capteur. Cette dernière est constituée d'une seule activité sur laquelle il est possible d'acquérir les données du capteur en temps réel et de les tracer sur un graphique dynamique.
  > <div class="column" align="center">
- > <img src="interface.jpg" alt="300" width="300"/>
- > <img src="" alt="300" width="300"/>
+ > <img src="interface.jpg">
+ > </div>
+ **Figure 6 - page d'accueil de la dernière version de l'application mobile. Cette capture d'écran a été prise pendant le fonctionnement du capteur.**
+ 
+> On programme des blocks de fonction pour connecter Module Bluetooth HC05 et tracer le variation de resistance en temps.
+ > <div class="column" align="center">
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_bluetoothconnect.png">
+  **Figure 7 - Blocks Connection Bluetooth .**
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_init.png">
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_initgraph.png">
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_mapvalue.png">
+   **Figure 7 - Blocks Initialiser programme et mapping valeur pour le graphe.**
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_start.png">
+ > <img src="application Android/MIT APP INVENTOR BLOCKS/blocks_grapghe.png">
+  **Figure 7 - Blocks tracer le graphe.**
  > </div>
 
- **Figure 6 - page d'accueil de la dernière version de l'application mobile. Cette capture d'écran a été prise pendant le fonctionnement du capteur.**
+
 
  > Pour la connection Bluetooth, le smartphone doit être appareillé au module du capteur avant de pouvoir se connecter via l'application mobile. L'application ne permet pas de choisir à quel module se connecter. En réalité, l'application est liée à un module bluetooth en particulier (celui fourni avec le capteur) et lui seul pourra être connecté au smartphone pour la transmission de données. Une piste d'amélioration consiste à afficher la liste des dispositifs appareillés pour se connecter au module souhaité. Nous n'avons cependant pas pu implémenter cette fonctionnalité par manque de temps.
 
- > N.B: le fichier .apk de l'application mobile est situé dans le répertoire suivant: ....... .
+ > N.B: le fichier .apk de l'application mobile est situé dans le répertoire suivant: [ici](https://github.com/MOSH-Insa-Toulouse/2022-2023-4GP-Thang-Tien/blob/0f889ce377105a8e069ff56407e032ddfc5c72b9/application%20Android/APP_PROJET_CAPTEUR.apk)
 # 5. Mesures : Banc de test, datasheet et discussions
   ## 5.1. Banc de test
    > <div class="column" align="center">
@@ -86,11 +98,15 @@
  > </div>
   Nous utilisons ce banc de test composé de 7 demi cylindres de différents diamètres allant de 2 à 5 cm avec un pas de 0,5 cm. Nous posons le capteur sur chacun des cylindres et appliquons donc une déformation sur celui-ci. Cette déformation se retrouve avec la formule ci-dessous :
             $$\epsilon = \frac{e}{2r}$$
- 
-avec e l’épaisseur du capteur et r le rayon de courbure donc le rayon de chaque demi cylindre. Nous avons réalisé les mesures en compression et en tension pour chacun de nos capteurs.
+ La déformation ε dépend de l'épaisseur (**e**) de la feuille du capteur (nous avons prit pour ça 0.16mm qui est le grammage de feuille 140g/m²) et du rayon de courbure des cercles (**r**) donc le rayon de chaque demi cylindre. Nous avons réalisé les mesures en compression et en tension pour chacun de nos capteurs. 
   ## 5.2. Mesures et résultats
-  On realise la test sur le capteur graphite de HB, 2H sous même tension entrée. 
   
+  On realise la test sur le capteur graphite de HB, 2H sous même tension entrée. 
+  > <div class="column" align="center">
+ > <img src="Variation de résistance en fonction de la deformation.png" >
+ > <img src="Variation de résistance en fonction de la deformation 2H.png" >
+ > </div>
+ 
+  Le pente de courbe de HB est inférieur à celui de 2H, correspondant au taux ΔR/R0 inférieur. Les mines les plus dures contiennent une grande quantité de liants argileux et donc moins de graphite, tandis que les mines plus tendres déposent une plus grande quantité de graphite sur le papier. Dans notre cas, cette différence de concentration de graphite sur le capteur influence sa résistance. C'est pourquoi les courbes associées aux mines HB présentent des valeurs de résistance (ΔR/R0) inférieures à celles de la mine 2H, qui est plus dure. 
   ## 5.3. Datasheet
-  ## 5.4. Discussions
   
