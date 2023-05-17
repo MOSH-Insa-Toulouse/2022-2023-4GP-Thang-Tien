@@ -50,6 +50,26 @@
 
   ## 2.2. Intégration Arduino
    > <div class="row" align="center">
+   > <img src="image Kicad projet/Circuit_Kicad.png"/>
+   > </div>
+  
+   > <div class="row" align="center">
+   > <img src="image Kicad projet/image.png"/>
+   > </div>
+
+   > <div class="row" align="center">
+   > <img src="image Kicad projet/Encoder_Kicad.png"/>
+   > </div>
+  
+   > <div class="row" align="center">
+   > <img src="image Kicad projet/BlueTooth_Kicadicad.png"/>
+   > </div>
+   
+   > <div class="row" align="center">
+   > <img src="image Kicad projet/OLED_Kicad.png"/>
+   > </div>
+  
+   > <div class="row" align="center">
    > <img src="image Kicad projet/pcb imprimé.PNG"/>
    > </div>
  
