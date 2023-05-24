@@ -58,15 +58,15 @@
    > </div>
 
    > <div class="row" align="center">
-   > <img width="400" alt="image" src="image Kicad projet/Encoder_Kicad.png"/> <img width="300" src="ProjetCapteur_kicad/Models/KY_040/image/perspective 1 .png"/>
+   > <img width="400" src="image Kicad projet/Encoder_Kicad.png"/> <img src="ProjetCapteur_kicad/Models/KY_040/image/perspective 1 .png"/>
    > </div>
   
    > <div class="row" align="center">
-   > <img width="400" alt="image" src="image Kicad projet/BlueTooth_Kicadicad.png"/> <img width="300" src="ProjetCapteur_kicad/Models/Bluetooth_HC-05/HC_05 Blue Tooth Module.JPG"/>
+   > <img width="400" src="image Kicad projet/BlueTooth_Kicadicad.png"/> <img src="ProjetCapteur_kicad/Models/Bluetooth_HC-05/HC_05 Blue Tooth Module.JPG"/>
    > </div>
    
    > <div class="row" align="center">
-   > <img width="400" alt="image" src="image Kicad projet/OLED_Kicad.png"/> <img width="300" src="ProjetCapteur_kicad/Models/display-oled-ssd1306-de-0-96-1.snapshot.6/OLED-128x64-0.96.png"/>
+   > <img width="400" src="image Kicad projet/OLED_Kicad.png"/> <img src="ProjetCapteur_kicad/Models/display-oled-ssd1306-de-0-96-1.snapshot.6/OLED-128x64-0.96.png"/>
    > </div>
   
    > <div class="row" align="center">
