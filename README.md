@@ -58,19 +58,19 @@
    > </div>
 
    > <div class="row" align="center">
-   > <img src="image Kicad projet/Encoder_Kicad.png"/>
+   > <img width="400" src="image Kicad projet/Encoder_Kicad.png"/>
    > </div>
   
    > <div class="row" align="center">
-   > <img src="image Kicad projet/BlueTooth_Kicadicad.png"/>
+   > <img width="400" src="image Kicad projet/BlueTooth_Kicadicad.png"/>
    > </div>
    
    > <div class="row" align="center">
-   > <img src="image Kicad projet/OLED_Kicad.png"/>
+   > <img width="400" src="image Kicad projet/OLED_Kicad.png"/>
    > </div>
   
    > <div class="row" align="center">
-   > <img src="image Kicad projet/pcb imprimé.PNG"/>
+   > <img width="400" src="image Kicad projet/pcb imprimé.PNG"/>
    > </div>
  
    **Figure 4 - Design du PCB.**
