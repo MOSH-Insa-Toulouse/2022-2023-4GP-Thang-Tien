@@ -129,4 +129,4 @@
  
   Le pente de courbe de HB est inférieur à celui de 2H, correspondant au taux ΔR/R0 inférieur. Les mines les plus dures contiennent une grande quantité de liants argileux et donc moins de graphite, tandis que les mines plus tendres déposent une plus grande quantité de graphite sur le papier. Dans notre cas, cette différence de concentration de graphite sur le capteur influence sa résistance. C'est pourquoi les courbes associées aux mines HB présentent des valeurs de résistance (ΔR/R0) inférieures à celles de la mine 2H, qui est plus dure. 
   ## 5.3. Datasheet
-  
+  The datasheet is available [here](https://github.com/MOSH-Insa-Toulouse/2022-2023-4GP-Thang-Tien/blob/main/Datasheet/Datasheet_graphite_sensor.pdf).
